@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/sensors/create', function () {
+    return view('sensors.create');
+});
