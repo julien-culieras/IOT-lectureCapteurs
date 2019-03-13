@@ -11,9 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/sensors/create', function () {
-    return view('sensors.create');
-});
+
+use Illuminate\Support\Facades\Route;
+
+
+
+
+Route::get('/', 'SensorsController@index')->name('sensors.index');
+Route::get('sensor/{sensor}', 'SensorsController@show')->name('sensors.show');
+Route::get('sensor/create', 'SensorsController@create')->name('sensors.create');
+
+Route::get('ajax/sensor/{sensor}/getLastRecord', 'SensorsController@getLastRecord');
+
+Route::post('api/insertRecord', 'SensorsController@insertRecord');
