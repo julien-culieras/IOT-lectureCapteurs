@@ -1,25 +1,24 @@
 @extends('layouts.app')
 
-@section('title', 'Liste des capteurs')
+@section('title', 'Liste des types')
 
 
 @section('content')
-    <a href="{{ route('sensors.create') }}" class="btn btn-primary">Ajouter</a>
+    <a href="{{ route('types.create') }}" class="btn btn-primary">Ajouter</a>
     <h2>Liste des capteurs</h2>
     <table class="table table-striped">
         <tr>
             <th>Nom</th>
-            <th>Adresse</th>
+            <th>Unité</th>
             <th>actions</th>
         </tr>
-        @foreach($sensors as $sensor)
+        @foreach($types as $type)
             <tr>
-                <td>{{ $sensor->name }}</td>
-                <td>{{ $sensor->address }}</td>
+                <td>{{ $type->name }}</td>
+                <td>{{ $type->unit }}</td>
                 <td style="display: flex">
-                    <a class="btn btn-primary" href="{{ route('sensors.show', $sensor) }}">Voir</a>
-                    <a style="margin-left: 5px; margin-right: 5px" class="btn btn-warning" href="{{ route('sensors.edit', $sensor) }}">Modif</a>
-                    <form style="margin-bottom: 0" action="{{ route('sensors.delete', $sensor) }}" method="post">
+                    <a style="margin-left: 5px; margin-right: 5px" class="btn btn-warning" href="{{ route('types.edit', $type) }}">Modif</a>
+                    <form style="margin-bottom: 0" action="{{ route('types.delete', $type) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <input type="submit" class="btn btn-danger btnDelete" value="SUPPR">
@@ -40,7 +39,7 @@
                 let form = btn.parent();
                 Swal.fire({
                     title: 'Etes vous sur ?',
-                    text: "La suppression d'un capteur est définitive",
+                    text: "La suppression d'un type est définitive et entrainera la suppression de tous les capteurs liés",
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
