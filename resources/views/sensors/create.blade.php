@@ -15,11 +15,21 @@
             <label for="address">Adresse Mac</label>
             <input type="text" name="address" id="address" class="form-control">
         </div>
+
         <div class="form-group">
             <label for="type">Type</label>
             <select name="type" id="type" class="form-control">
                 @foreach($types as $type)
                     <option value="{{ $type->id }}">{{ $type->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="raspberry">Raspberry</label>
+            <select name="raspberry" id="raspberry" class="form-control">
+                @foreach($raspberry as $raspberryItem)
+                    <option value="{{ $raspberryItem->id }}">{{ $raspberryItem->name }}</option>
                 @endforeach
             </select>
         </div>

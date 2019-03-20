@@ -19,4 +19,12 @@ class Sensor extends Model
         return $this->hasMany(Record::class);
     }
 
+    public function raspberry(){
+        return $this->belongsTo(Raspberry::class);
+    }
+
+    public static function getByAddress($address){
+        return self::where('address', '=', $address)->get()->first();
+    }
+
 }

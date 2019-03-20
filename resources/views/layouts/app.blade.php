@@ -8,6 +8,9 @@
 <nav style="background-color: #1b4b72">
     <ul style="list-style: none; display: flex">
         <li style="margin: 10px">
+            <a style="color: #fff" href="{{ route('raspberry.index') }}">Raspberry</a>
+        </li>
+        <li style="margin: 10px">
             <a style="color: #fff" href="{{ route('sensors.index') }}">Capteurs</a>
         </li>
         <li style="margin: 10px">

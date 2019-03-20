@@ -16,6 +16,7 @@
             <label for="address">Adresse Mac</label>
             <input type="text" name="address" id="address" class="form-control" value="{{ $sensor->address }}">
         </div>
+
         <div class="form-group">
             <label for="type">Type</label>
             <select name="type" id="type" class="form-control">
@@ -23,6 +24,18 @@
                     <option @if($type->id == $sensor->type->id) selected @endif
                         value="{{ $type->id }}">
                             {{ $type->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="raspberry">Raspberry</label>
+            <select name="raspberry" id="raspberry" class="form-control">
+                @foreach($raspberry as $raspberryItem)
+                    <option @if($raspberryItem->id == $sensor->raspberry->id) selected @endif
+                    value="{{ $raspberryItem->id }}">
+                        {{ $raspberryItem->name }}
                     </option>
                 @endforeach
             </select>

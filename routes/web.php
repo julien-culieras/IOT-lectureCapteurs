@@ -19,6 +19,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/raspberry', 'RaspberryController@index')->name('raspberry.index');
+Route::get('/raspberry/create', 'RaspberryController@create')->name('raspberry.create');
+Route::post('/raspberry', 'RaspberryController@insert')->name('raspberry.insert');
+Route::put('/raspberry/{raspberry}', 'RaspberryController@update')->name('raspberry.update');
+Route::delete('/raspberry/{raspberry}', 'RaspberryController@delete')->name('raspberry.delete');
+Route::get('/raspberry/{raspberry}/edit', 'RaspberryController@edit')->name('raspberry.edit');
+
+
+
+
+
 Route::get('/sensors', 'SensorsController@index')->name('sensors.index');
 Route::get('/sensors/create', 'SensorsController@create')->name('sensors.create');
 Route::post('/sensors', 'SensorsController@insert')->name('sensors.insert');
@@ -28,7 +39,8 @@ Route::delete('/sensors/{sensor}', 'SensorsController@delete')->name('sensors.de
 Route::get('/sensors/{sensor}/edit', 'SensorsController@edit')->name('sensors.edit');
 
 Route::get('/ajax/sensor/{sensor}/getLastRecord', 'SensorsController@getLastRecord');
-Route::post('/api/insertRecord', 'SensorsController@insertRecord');
+
+
 
 
 Route::get('/types', 'TypesController@index')->name('types.index');

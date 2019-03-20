@@ -16,8 +16,13 @@ class CreateSensorsTable extends Migration
         Schema::create('sensors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('address');
+
             $table->integer('type_id')->unsigned();
             $table->foreign('type_id')->references('id')->on('types')
+                ->onDelete('CASCADE');
+
+            $table->integer('raspberry_id')->unsigned();
+            $table->foreign('raspberry_id')->references('id')->on('raspberry')
                 ->onDelete('CASCADE');
             $table->timestamps();
         });
