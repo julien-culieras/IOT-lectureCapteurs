@@ -18,6 +18,11 @@
         </div>
 
         <div class="form-group">
+            <label for="refreshInterval">Interval de raffraichissement (secondes)</label>
+            <input type="number" name="refreshInterval" id="refreshInterval" class="form-control" value="{{ $sensor->refreshInterval }}">
+        </div>
+
+        <div class="form-group">
             <label for="type">Type</label>
             <select name="type" id="type" class="form-control">
                 @foreach($types as $type)

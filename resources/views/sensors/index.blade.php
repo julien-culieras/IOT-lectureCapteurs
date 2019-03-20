@@ -10,12 +10,16 @@
         <tr>
             <th>Nom</th>
             <th>Adresse</th>
+            <th>Raspberry</th>
+            <th>Interval refresh (s)</th>
             <th>actions</th>
         </tr>
         @foreach($sensors as $sensor)
             <tr>
                 <td>{{ $sensor->name }}</td>
                 <td>{{ $sensor->address }}</td>
+                <td>{{ $sensor->raspberry->name }} @ {{ $sensor->raspberry->address }}</td>
+                <td>{{ $sensor->refreshInterval }}</td>
                 <td style="display: flex">
                     <a class="btn btn-primary" href="{{ route('sensors.show', $sensor) }}">Voir</a>
                     <a style="margin-left: 5px; margin-right: 5px" class="btn btn-warning" href="{{ route('sensors.edit', $sensor) }}">Modif</a>

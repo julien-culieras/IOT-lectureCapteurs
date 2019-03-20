@@ -8,7 +8,7 @@ class Sensor extends Model
 {
 
     protected $fillable = [
-        'address', 'name'
+        'address', 'name', 'refreshInterval'
     ];
 
     public function type(){
