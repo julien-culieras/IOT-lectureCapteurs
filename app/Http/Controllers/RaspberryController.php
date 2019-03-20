@@ -61,4 +61,16 @@ class RaspberryController extends Controller{
         return back();
     }
 
+    public function setOnline(Raspberry $raspberry){
+        $raspberry->state = 1;
+        $raspberry->update();
+        return back();
+    }
+
+    public function setOffline(Raspberry $raspberry){
+        $raspberry->state = 0;
+        $raspberry->update();
+        return back();
+    }
+
 }

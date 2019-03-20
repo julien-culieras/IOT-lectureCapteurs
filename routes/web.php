@@ -26,6 +26,9 @@ Route::put('/raspberry/{raspberry}', 'RaspberryController@update')->name('raspbe
 Route::delete('/raspberry/{raspberry}', 'RaspberryController@delete')->name('raspberry.delete');
 Route::get('/raspberry/{raspberry}/edit', 'RaspberryController@edit')->name('raspberry.edit');
 
+Route::get('/raspberry/{raspberry}/setOffline', 'RaspberryController@setOffline')->name('raspberry.setOffline');
+Route::get('/raspberry/{raspberry}/setOnline', 'RaspberryController@setOnline')->name('raspberry.setOnline');
+
 
 
 

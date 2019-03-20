@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('/ping', 'ApiController@ping');
+Route::post('/isOnline', 'ApiController@isOnline');
+Route::post('/ping', 'ApiController@getSensors');
 Route::post('/postRecord', 'ApiController@postRecord');
