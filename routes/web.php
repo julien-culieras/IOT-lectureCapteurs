@@ -38,8 +38,8 @@ Route::put('/sensors/{sensor}', 'SensorsController@update')->name('sensors.updat
 Route::delete('/sensors/{sensor}', 'SensorsController@delete')->name('sensors.delete');
 Route::get('/sensors/{sensor}/edit', 'SensorsController@edit')->name('sensors.edit');
 
-Route::get('/ajax/sensor/{sensor}/getLastRecord', 'SensorsController@getLastRecord');
-
+Route::get('/ajax/sensors/{sensor}/getLastRecords', 'SensorsController@getLastRecords');
+Route::get('/ajax/sensors/{sensor}/getNewRecord', 'SensorsController@getNewRecord');
 
 
 

@@ -3,7 +3,7 @@
 @section('title', 'Visu capteur')
 
 @section('content')
-    <div id="app">
+    <div id="app" data-sensor="{{ $sensor->id }}" data-refreshInterval="{{ $sensor->refreshInterval }}">
 
     </div>
 

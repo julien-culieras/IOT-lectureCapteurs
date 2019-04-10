@@ -27,4 +27,15 @@ class Sensor extends Model
         return self::where('address', '=', $address)->get()->first();
     }
 
+    public function getRecords(int $limit = 15, int $offset = 0) {
+        return $this->records()->latest("recorded_at")->take($limit)->get();
+    }
+
+    public function getNewRecord() {
+        $lastRecord = $this->records()->latest("recorded_at")->take(1)->get();
+        if($lastRecord->recorded_at->diffInSeconds() <= $this->refreshInterval) {
+            return $lastRecord;
+        }
+        return null;
+    }
 }

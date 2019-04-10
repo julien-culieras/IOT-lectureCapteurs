@@ -1,27 +1,50 @@
-import Chart from "chart.js"
+import Chart from "chart.js";
 
 class Sensor {
-    constructor(data, context) {
-        this.data = data
-        this.context = context
+    constructor(config, context) {
+        this.id = config.id;
+        this.refreshRate = config.refreshRate;
+        this.data = [];
+        this.context = context;
+    }
+
+    refreshData() {
+        setInterval(() => {
+            fetch(`http://localhost:8000/ajax/sensors/${this.id}/getNewRecord`).then(response => {
+                return response.json().then(dataJson => {
+                    dataJson.record && this.data.push(dataJson.record);
+                    console.log("new value:", dataJson);
+                });
+            });
+        }, this.refreshRate);
+    }
+
+    getInitialData(cb) {
+        fetch(`http://localhost:8000/ajax/sensors/${this.id}/getLastRecords`).then(response => {
+            return response.json().then(dataJson => {
+                this.data = dataJson.reverse();
+                cb();
+                this.refreshData();
+            });
+        });
     }
 
     display() {
-        const labels = []
-        for (let i = 0; i < this.data.records.length; i++) {
-            labels.push(this.data.records[i].date)
+        const labels = [];
+        for (let i = 0; i < this.data.length; i++) {
+            labels.push(this.data[i].recorded_at);
         }
-        const values = []
-        for (let i = 0; i < this.data.records.length; i++) {
-            values.push(this.data.records[i].values)
+        const values = [];
+        for (let i = 0; i < this.data.length; i++) {
+            values.push(this.data[i].value);
         }
-        const chart = new Chart(context, {
+        const chart = new Chart(this.context, {
             type: "line",
             data: {
                 labels,
                 datasets: [
                     {
-                        label: this.data.sensor.name,
+                        label: "un snsor",
                         backgroundColor: "rgb(255, 99, 132)",
                         borderColor: "rgb(255, 99, 132)",
                         data: values
@@ -63,8 +86,8 @@ class Sensor {
                     ]
                 }
             }
-        })
+        });
     }
 }
 
-export default Sensor
+export default Sensor;

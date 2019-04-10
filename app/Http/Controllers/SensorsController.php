@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Raspberry;
+use App\Record;
 use App\Sensor;
 use App\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class SensorsController extends Controller
 {
@@ -48,6 +50,25 @@ class SensorsController extends Controller
             ->with('sensor', $sensor)
             ->with('types', $types)
             ->with('raspberry', $raspberry);
+    }
+
+    public function getLastRecords(Sensor $sensor){
+        $records = $sensor->getRecords();
+
+        return Response::json($records, 200);
+    }
+
+    public function getNewRecord(Sensor $sensor) {
+        if($newRecord = $sensor->getNewRecord()) {
+            return Response::json([
+                "record" => $newRecord,
+                "foundNewRecord" => true
+            ], 200);
+        }
+
+        return Response::json([
+            "foundNewRecord" => false
+        ], 200);
     }
 
     public function update(Request $request, Sensor $sensor){

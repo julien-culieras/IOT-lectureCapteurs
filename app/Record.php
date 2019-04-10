@@ -14,6 +14,10 @@ class Record extends Model
         'value'
     ];
 
+    protected $dates = [
+        'recorded_at'
+    ];
+
     public function sensor(){
         return $this->belongsTo(Sensor::class);
     }

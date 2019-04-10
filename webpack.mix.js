@@ -1,4 +1,4 @@
-const mix = require("laravel-mix")
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +11,6 @@ const mix = require("laravel-mix")
  |
  */
 
-mix.js(["resources/js/app.js", "resources/js/app/Sensor"], "public/js").sass(
-    "resources/sass/app.scss",
-    "public/css"
-)
+mix.js(["resources/js/app.js", "resources/js/Sensor.js"], "public/js")
+    .sass("resources/sass/app.scss", "public/css")
+    .sourceMaps();
