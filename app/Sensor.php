@@ -19,6 +19,10 @@ class Sensor extends Model
         return $this->hasMany(Record::class);
     }
 
+    public function lastRecord(){
+        return $this->records()->orderByDesc('recorded_at')->first();
+    }
+
     public function raspberry(){
         return $this->belongsTo(Raspberry::class);
     }

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('/isOnline', 'ApiController@isOnline');
-Route::post('/ping', 'ApiController@getSensors');
-Route::post('/postRecord', 'ApiController@postRecord');
+Route::get('/isOnline', 'ApiController@isOnline');
+Route::get('/listSensors', 'ApiController@getSensors');
+Route::post('/postRecords', 'ApiController@postRecords');
