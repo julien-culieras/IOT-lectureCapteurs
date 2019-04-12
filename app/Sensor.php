@@ -33,7 +33,8 @@ class Sensor extends Model
 
     public function getNewRecord() {
         $lastRecord = $this->records()->latest("recorded_at")->take(1)->get();
-        if($lastRecord->recorded_at->diffInSeconds() <= $this->refreshInterval) {
+        //if($lastRecord->recorded_at->diffInSeconds() <= $this->refreshInterval) {
+        if(true) {
             return $lastRecord;
         }
         return null;
